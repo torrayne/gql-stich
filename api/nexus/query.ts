@@ -1,4 +1,4 @@
-import { arg, intArg, list, queryType, stringArg } from "nexus";
+import { arg, intArg, list, queryField, queryType, stringArg } from "nexus";
 
 export const Query = queryType({
   definition(t) {
@@ -24,4 +24,9 @@ export const Query = queryType({
       },
     });
   },
+});
+
+export const testQuery = queryField("test", {
+  type: "String",
+  resolve: () => "nexus",
 });

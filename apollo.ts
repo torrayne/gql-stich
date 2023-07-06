@@ -7,6 +7,7 @@ import { schema as PothosSchema } from "./api/pothos/schema";
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
 export const apollo = new ApolloServer({
+  // If both schemas define the same query, the later schema will override all earlier schemas
   schema: mergeSchemas({ schemas: [NexusSchema, PothosSchema] }),
   csrfPrevention: true,
   cache: "bounded",

@@ -10,3 +10,7 @@ builder.queryType({
     }),
   }),
 });
+
+builder.queryField("test", (t) =>
+  t.field({ type: "String", resolve: () => "pothos" })
+);
