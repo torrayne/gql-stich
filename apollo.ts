@@ -1,12 +1,13 @@
-import { ApolloServerPluginLandingPageLocalDefault } from "apollo-server-core";
 import { ApolloServer } from "apollo-server";
-// import { schema as NexusSchema } from "./api/nexus/schema";
+import { ApolloServerPluginLandingPageLocalDefault } from "apollo-server-core";
+import { schema as NexusSchema } from "./api/nexus/schema";
+import { mergeSchemas } from "@graphql-tools/schema";
 import { schema as PothosSchema } from "./api/pothos/schema";
 
 // The ApolloServer constructor requires two parameters: your schema
 // definition and your set of resolvers.
 export const apollo = new ApolloServer({
-  schema: PothosSchema,
+  schema: mergeSchemas({ schemas: [NexusSchema, PothosSchema] }),
   csrfPrevention: true,
   cache: "bounded",
   /**
